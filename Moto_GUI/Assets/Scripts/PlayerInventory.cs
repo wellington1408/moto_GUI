@@ -1,15 +1,17 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PlayerInventory : MonoBehaviour
 {
+    public int playerId = 1;
     private int currentCoins = 0;
 
     private void Start()
     {
-        if (!SceneManager.GetSceneByName("GUI").isLoaded)
+        PlayerInput pInput = GetComponent<PlayerInput>();
+        if (pInput != null)
         {
-            SceneManager.LoadSceneAsync("GUI", LoadSceneMode.Additive);
+            playerId = pInput.playerIndex + 1;
         }
     }
 
@@ -25,7 +27,8 @@ public class PlayerInventory : MonoBehaviour
     public void AddCoins(int amount)
     {
         currentCoins += amount;
-        
-        PlayerObserverManager.NotifyCoinsChanged(currentCoins);
+        PlayerObserverManager.NotifyCoinsChanged(playerId, currentCoins);
     }
+
+    public int GetCoins() => currentCoins;
 }

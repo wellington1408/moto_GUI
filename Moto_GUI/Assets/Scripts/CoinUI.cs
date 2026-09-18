@@ -3,23 +3,41 @@ using TMPro;
 
 public class CoinUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI coinText;
+    [Header("Textos dos Placares")]
+    [SerializeField] private TextMeshProUGUI p1Text;
+    [SerializeField] private TextMeshProUGUI p2Text;
+
+    [Header("Painel de Vitória")]
+    [SerializeField] private GameObject winnerPanel;
+    [SerializeField] private TextMeshProUGUI winnerText;
 
     private void OnEnable()
     {
-        PlayerObserverManager.OnCoinsChanged += UpdateCoinText;
+        PlayerObserverManager.OnCoinsChanged += UpdateCoinsDisplay;
+        PlayerObserverManager.OnGameOver += DisplayWinner;
     }
 
     private void OnDisable()
     {
-        PlayerObserverManager.OnCoinsChanged -= UpdateCoinText;
+        PlayerObserverManager.OnCoinsChanged -= UpdateCoinsDisplay;
+        PlayerObserverManager.OnGameOver -= DisplayWinner;
     }
 
-    private void UpdateCoinText(int amount)
+    private void UpdateCoinsDisplay(int playerId, int amount)
     {
-        if (coinText != null)
+        if (playerId == 1 && p1Text != null)
         {
-            coinText.text = $"MOEDAS:{amount}";
+            p1Text.text = $"P1 Moedas: {amount}";
         }
+        else if (playerId == 2 && p2Text != null)
+        {
+            p2Text.text = $"P2 Moedas: {amount}";
+        }
+    }
+
+    private void DisplayWinner(string message)
+    {
+        if (winnerPanel != null) winnerPanel.SetActive(true);
+        if (winnerText != null) winnerText.text = message;
     }
 }

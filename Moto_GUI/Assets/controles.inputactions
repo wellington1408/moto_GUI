@@ -1,0 +1,179 @@
+{
+    "version": 1,
+    "name": "controles",
+    "maps": [
+        {
+            "name": "player",
+            "id": "fc9a6790-e5b5-40aa-9364-e3e8c3e6d46c",
+            "actions": [
+                {
+                    "name": "mover",
+                    "type": "Value",
+                    "id": "a040d076-2ebd-4d91-8e06-11b1b65d7d91",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4c02edc9-d7d7-4b5a-a3e5-4e90dbaa8079",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";tecladoP1",
+                    "action": "mover",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8accf6c6-1059-4e32-b7e9-2a8b237d8d7c",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";tecladoP2",
+                    "action": "mover",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "p1",
+                    "id": "cfbf5e8b-0a54-454a-9a11-b176e267d439",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "mover",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "819c1c3e-7857-4096-9f3c-83de512583ad",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";tecladoP1",
+                    "action": "mover",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "dc0ad45d-875c-476a-a891-784f2d65d6b8",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";tecladoP1",
+                    "action": "mover",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "8d3cd3a6-4f13-4b42-b859-6ec10660cde5",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";tecladoP1",
+                    "action": "mover",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "482dad91-f474-4511-986b-931ed7accae8",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";tecladoP1",
+                    "action": "mover",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "p2",
+                    "id": "23543529-0d4e-4c77-abcf-fd1ca59523c1",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "mover",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "7dc754ed-93fb-4dd5-b4ba-916f18de49a1",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";tecladoP2",
+                    "action": "mover",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "682448db-0415-4063-8f3b-722bc0fe4a72",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";tecladoP2",
+                    "action": "mover",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "19eeda35-8f3b-4133-b5cf-7b0539e62460",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";tecladoP2",
+                    "action": "mover",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "363caf09-c84a-439f-a17f-c0ff8863ad00",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";tecladoP2",
+                    "action": "mover",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "tecladoP1",
+            "bindingGroup": "tecladoP1",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "tecladoP2",
+            "bindingGroup": "tecladoP2",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
