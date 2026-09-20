@@ -3,41 +3,40 @@ using TMPro;
 
 public class CoinUI : MonoBehaviour
 {
-    [Header("Textos dos Placares")]
-    [SerializeField] private TextMeshProUGUI p1Text;
-    [SerializeField] private TextMeshProUGUI p2Text;
+    [Header("Textos de Moedas")]
+    public TextMeshProUGUI p1CoinText;
+    public TextMeshProUGUI p2CoinText;
 
     [Header("Painel de Vitória")]
-    [SerializeField] private GameObject winnerPanel;
-    [SerializeField] private TextMeshProUGUI winnerText;
+    public GameObject winnerPanel;
+    public TextMeshProUGUI winnerText;
 
     private void OnEnable()
     {
-        PlayerObserverManager.OnCoinsChanged += UpdateCoinsDisplay;
-        PlayerObserverManager.OnGameOver += DisplayWinner;
+        PlayerObserverManager.OnCoinsChanged += UpdateCoinText;
+        PlayerObserverManager.OnGameOver += ShowWinner;
     }
 
     private void OnDisable()
     {
-        PlayerObserverManager.OnCoinsChanged -= UpdateCoinsDisplay;
-        PlayerObserverManager.OnGameOver -= DisplayWinner;
+        PlayerObserverManager.OnCoinsChanged -= UpdateCoinText;
+        PlayerObserverManager.OnGameOver -= ShowWinner;
     }
 
-    private void UpdateCoinsDisplay(int playerId, int amount)
+    private void UpdateCoinText(int playerId, int count)
     {
-        if (playerId == 1 && p1Text != null)
-        {
-            p1Text.text = $"P1 Moedas: {amount}";
-        }
-        else if (playerId == 2 && p2Text != null)
-        {
-            p2Text.text = $"P2 Moedas: {amount}";
-        }
+        if (playerId == 1 && p1CoinText != null)
+            p1CoinText.text = $"P1 MOEDAS: {count}";
+        else if (playerId == 2 && p2CoinText != null)
+            p2CoinText.text = $"P2 MOEDAS: {count}";
     }
 
-    private void DisplayWinner(string message)
+    private void ShowWinner(string message)
     {
-        if (winnerPanel != null) winnerPanel.SetActive(true);
-        if (winnerText != null) winnerText.text = message;
+        if (winnerPanel != null) 
+            winnerPanel.SetActive(true);
+
+        if (winnerText != null) 
+            winnerText.text = message; 
     }
 }

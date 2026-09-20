@@ -3,16 +3,15 @@ using System;
 public static class PlayerObserverManager
 {
     public static event Action<int, int> OnCoinsChanged;
-    
     public static event Action<string> OnGameOver;
 
-    public static void NotifyCoinsChanged(int playerId, int newCoinAmount)
+    public static void NotifyCoinsChanged(int playerId, int coins)
     {
-        OnCoinsChanged?.Invoke(playerId, newCoinAmount);
+        OnCoinsChanged?.Invoke(playerId, coins);
     }
 
-    public static void NotifyGameOver(string winnerText)
+    public static void NotifyGameOver(string message)
     {
-        OnGameOver?.Invoke(winnerText);
+        OnGameOver?.Invoke(message);
     }
 }

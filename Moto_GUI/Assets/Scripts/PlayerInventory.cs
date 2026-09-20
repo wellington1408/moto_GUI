@@ -1,20 +1,27 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using StarterAssets; 
 
 public class PlayerInventory : MonoBehaviour
 {
+    [Header("Configuração Manual")]
     public int playerId = 1;
+    [SerializeField] private bool usarIdDoInspector = true;
+
+    [Header("Configuração de Velocidade")]
+    [SerializeField] private float speedMultiplier = 1.20f;
+
     private int currentCoins = 0;
 
     private void Start()
     {
         PlayerInput pInput = GetComponent<PlayerInput>();
-        if (pInput != null)
+        
+        if (!usarIdDoInspector && pInput != null)
         {
             playerId = pInput.playerIndex + 1; 
         }
 
-    
         if (GameManager.Instance != null)
         {
             GameManager.Instance.RegisterPlayer(this);
@@ -27,6 +34,9 @@ public class PlayerInventory : MonoBehaviour
         {
             currentCoins++;
 
+            
+            AumentarVelocidade();
+
           
             PlayerObserverManager.NotifyCoinsChanged(playerId, currentCoins);
             
@@ -36,6 +46,21 @@ public class PlayerInventory : MonoBehaviour
             }
 
             Destroy(other.gameObject);
+        }
+    }
+
+    private void AumentarVelocidade()
+    {
+        
+        ThirdPersonController controller = GetComponent<ThirdPersonController>();
+        
+        if (controller != null)
+        {
+           
+            controller.MoveSpeed *= speedMultiplier;
+            
+          
+            controller.SprintSpeed *= speedMultiplier;
         }
     }
 

@@ -8630,7 +8630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e1e942c31d72a2489c1ab73fc1f7cdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
-  playerId: 1
+  playerId: 2
 --- !u!1 &5470346677263771277
 GameObject:
   m_ObjectHideFlags: 0
