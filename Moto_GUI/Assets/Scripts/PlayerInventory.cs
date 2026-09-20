@@ -11,7 +11,13 @@ public class PlayerInventory : MonoBehaviour
         PlayerInput pInput = GetComponent<PlayerInput>();
         if (pInput != null)
         {
-            playerId = pInput.playerIndex + 1;
+            playerId = pInput.playerIndex + 1; 
+        }
+
+    
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RegisterPlayer(this);
         }
     }
 
@@ -19,15 +25,18 @@ public class PlayerInventory : MonoBehaviour
     {
         if (other.CompareTag("Coin"))
         {
-            AddCoins(1);
+            currentCoins++;
+
+          
+            PlayerObserverManager.NotifyCoinsChanged(playerId, currentCoins);
+            
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.OnCoinCollected();
+            }
+
             Destroy(other.gameObject);
         }
-    }
-
-    public void AddCoins(int amount)
-    {
-        currentCoins += amount;
-        PlayerObserverManager.NotifyCoinsChanged(playerId, currentCoins);
     }
 
     public int GetCoins() => currentCoins;
