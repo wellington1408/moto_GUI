@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using StarterAssets; 
+using StarterAssets;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -22,9 +22,9 @@ public class PlayerInventory : MonoBehaviour
             playerId = pInput.playerIndex + 1; 
         }
 
-        if (GameManager.Instance != null)
+        if (GameMenage.Instance != null)
         {
-            GameManager.Instance.RegisterPlayer(this);
+            GameMenage.Instance.RegisterPlayer(this);
         }
     }
 
@@ -34,15 +34,22 @@ public class PlayerInventory : MonoBehaviour
         {
             currentCoins++;
 
-            
             AumentarVelocidade();
 
-          
             PlayerObserverManager.NotifyCoinsChanged(playerId, currentCoins);
             
-            if (GameManager.Instance != null)
+            if (GameMenage.Instance != null)
             {
-                GameManager.Instance.OnCoinCollected();
+                GameMenage.Instance.OnCoinCollected();
+            }
+
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Star"))
+        {
+            if (GameMenage.Instance != null)
+            {
+                GameMenage.Instance.TriggerVictory(playerId);
             }
 
             Destroy(other.gameObject);
@@ -51,15 +58,11 @@ public class PlayerInventory : MonoBehaviour
 
     private void AumentarVelocidade()
     {
-        
         ThirdPersonController controller = GetComponent<ThirdPersonController>();
         
         if (controller != null)
         {
-           
             controller.MoveSpeed *= speedMultiplier;
-            
-          
             controller.SprintSpeed *= speedMultiplier;
         }
     }
